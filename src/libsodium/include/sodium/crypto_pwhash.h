@@ -101,9 +101,9 @@ size_t crypto_pwhash_memlimit_sensitive(void);
  * may change.
  */
 SODIUM_EXPORT
-int crypto_pwhash(unsigned char * const out, unsigned long long outlen,
-                  const char * const passwd, unsigned long long passwdlen,
-                  const unsigned char * const salt,
+int crypto_pwhash(unsigned char * out, unsigned long long outlen,
+                  const char * passwd, unsigned long long passwdlen,
+                  const unsigned char * salt,
                   unsigned long long opslimit, size_t memlimit, int alg)
             __attribute__ ((warn_unused_result)) __attribute__ ((nonnull));
 
@@ -114,19 +114,19 @@ int crypto_pwhash(unsigned char * const out, unsigned long long outlen,
  */
 SODIUM_EXPORT
 int crypto_pwhash_str(char out[crypto_pwhash_STRBYTES],
-                      const char * const passwd, unsigned long long passwdlen,
+                      const char * passwd, unsigned long long passwdlen,
                       unsigned long long opslimit, size_t memlimit)
             __attribute__ ((warn_unused_result)) __attribute__ ((nonnull));
 
 SODIUM_EXPORT
 int crypto_pwhash_str_alg(char out[crypto_pwhash_STRBYTES],
-                          const char * const passwd, unsigned long long passwdlen,
+                          const char * passwd, unsigned long long passwdlen,
                           unsigned long long opslimit, size_t memlimit, int alg)
             __attribute__ ((warn_unused_result)) __attribute__ ((nonnull));
 
 SODIUM_EXPORT
 int crypto_pwhash_str_verify(const char str[crypto_pwhash_STRBYTES],
-                             const char * const passwd,
+                             const char * passwd,
                              unsigned long long passwdlen)
             __attribute__ ((warn_unused_result)) __attribute__ ((nonnull));
 

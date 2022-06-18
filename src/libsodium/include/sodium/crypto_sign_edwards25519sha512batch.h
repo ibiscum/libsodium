@@ -3,7 +3,7 @@
 
 /*
  * WARNING: This construction was a prototype, which should not be used
- * any more in new projects.
+ * anymore in new projects.
  *
  * crypto_sign_edwards25519sha512batch is provided for applications
  * initially built with NaCl, but as recommended by the author of this

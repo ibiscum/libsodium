@@ -32,11 +32,11 @@ SODIUM_EXPORT
 size_t randombytes_seedbytes(void);
 
 SODIUM_EXPORT
-void randombytes_buf(void * const buf, const size_t size)
+void randombytes_buf(void * buf, size_t size)
             __attribute__ ((nonnull));
 
 SODIUM_EXPORT
-void randombytes_buf_deterministic(void * const buf, const size_t size,
+void randombytes_buf_deterministic(void * buf, size_t size,
                                    const unsigned char seed[randombytes_SEEDBYTES])
             __attribute__ ((nonnull));
 
@@ -44,7 +44,7 @@ SODIUM_EXPORT
 uint32_t randombytes_random(void);
 
 SODIUM_EXPORT
-uint32_t randombytes_uniform(const uint32_t upper_bound);
+uint32_t randombytes_uniform(uint32_t upper_bound);
 
 SODIUM_EXPORT
 void randombytes_stir(void);
@@ -62,7 +62,7 @@ const char *randombytes_implementation_name(void);
 /* -- NaCl compatibility interface -- */
 
 SODIUM_EXPORT
-void randombytes(unsigned char * const buf, const unsigned long long buf_len)
+void randombytes(unsigned char * buf, unsigned long long buf_len)
             __attribute__ ((nonnull));
 
 #ifdef __cplusplus

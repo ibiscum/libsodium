@@ -88,25 +88,25 @@ SODIUM_EXPORT
 size_t crypto_pwhash_argon2i_memlimit_sensitive(void);
 
 SODIUM_EXPORT
-int crypto_pwhash_argon2i(unsigned char * const out,
+int crypto_pwhash_argon2i(unsigned char * out,
                           unsigned long long outlen,
-                          const char * const passwd,
+                          const char * passwd,
                           unsigned long long passwdlen,
-                          const unsigned char * const salt,
+                          const unsigned char * salt,
                           unsigned long long opslimit, size_t memlimit,
                           int alg)
             __attribute__ ((warn_unused_result)) __attribute__ ((nonnull));
 
 SODIUM_EXPORT
 int crypto_pwhash_argon2i_str(char out[crypto_pwhash_argon2i_STRBYTES],
-                              const char * const passwd,
+                              const char * passwd,
                               unsigned long long passwdlen,
                               unsigned long long opslimit, size_t memlimit)
             __attribute__ ((warn_unused_result)) __attribute__ ((nonnull));
 
 SODIUM_EXPORT
 int crypto_pwhash_argon2i_str_verify(const char str[crypto_pwhash_argon2i_STRBYTES],
-                                     const char * const passwd,
+                                     const char * passwd,
                                      unsigned long long passwdlen)
             __attribute__ ((warn_unused_result)) __attribute__ ((nonnull));
 

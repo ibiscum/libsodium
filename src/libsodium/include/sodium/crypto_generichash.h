@@ -59,7 +59,7 @@ int crypto_generichash(unsigned char *out, size_t outlen,
 SODIUM_EXPORT
 int crypto_generichash_init(crypto_generichash_state *state,
                             const unsigned char *key,
-                            const size_t keylen, const size_t outlen)
+                            size_t keylen, size_t outlen)
             __attribute__ ((nonnull(1)));
 
 SODIUM_EXPORT
@@ -70,7 +70,7 @@ int crypto_generichash_update(crypto_generichash_state *state,
 
 SODIUM_EXPORT
 int crypto_generichash_final(crypto_generichash_state *state,
-                             unsigned char *out, const size_t outlen)
+                             unsigned char *out, size_t outlen)
             __attribute__ ((nonnull));
 
 SODIUM_EXPORT

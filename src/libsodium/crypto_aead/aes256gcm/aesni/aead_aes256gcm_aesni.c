@@ -151,7 +151,7 @@ aesni_encrypt1(unsigned char *out, __m128i nv, const __m128i *rkeys)
 
 /* Step 5: store result */
 #define STOREx(a) \
-    _mm_storeu_si128((__m128i *) (out + (a * 16)), temp##a)
+    _mm_storeu_si128((__m128i *) (out + ((a) * 16)), temp##a)
 
 /* all the MAKE* macros are for automatic explicit unrolling */
 #define MAKE4(X) \
@@ -406,15 +406,15 @@ do { \
     tmp3 = _mm_xor_si128(tmp3, tmp2); \
     tmp2B = _mm_xor_si128(tmp2B, tmp3); \
 \
-    accv = tmp2B; \
+    (accv) = tmp2B; \
 } while(0)
 
 #define XORx(a)                                                       \
         temp##a = _mm_xor_si128(temp##a,                              \
-                                _mm_loadu_si128((const __m128i *) (in + a * 16)))
+                                _mm_loadu_si128((const __m128i *) (in + (a) * 16)))
 
 #define LOADx(a)                                                      \
-    __m128i in##a = _mm_loadu_si128((const __m128i *) (in + a * 16))
+    __m128i in##a = _mm_loadu_si128((const __m128i *) (in + (a) * 16))
 
 /* full encrypt & checksum 8 blocks at once */
 #define aesni_encrypt8full(out_, n_, rkeys, in_, accum, hv_, h2v_, h3v_, h4v_, rev) \
@@ -440,10 +440,10 @@ do { \
     MAKE8(AESENCLASTx); \
     MAKE8(XORx); \
     MAKE8(STOREx); \
-    accv_ = _mm_load_si128((const __m128i *) accum); \
+    accv_ = _mm_load_si128((const __m128i *) (accum)); \
     MULREDUCE4(rev, hv, h2v, h3v, h4v, temp3, temp2, temp1, temp0, accv_); \
     MULREDUCE4(rev, hv, h2v, h3v, h4v, temp7, temp6, temp5, temp4, accv_); \
-    _mm_store_si128((__m128i *) accum, accv_); \
+    _mm_store_si128((__m128i *) (accum), accv_); \
 } while(0)
 
 /* checksum 8 blocks at once */
@@ -457,10 +457,10 @@ do { \
     __m128i accv_; \
     \
     MAKE8(LOADx); \
-    accv_ = _mm_load_si128((const __m128i *) accum); \
+    accv_ = _mm_load_si128((const __m128i *) (accum)); \
     MULREDUCE4(rev, hv, h2v, h3v, h4v, in3, in2, in1, in0, accv_); \
     MULREDUCE4(rev, hv, h2v, h3v, h4v, in7, in6, in5, in4, accv_); \
-    _mm_store_si128((__m128i *) accum, accv_); \
+    _mm_store_si128((__m128i *) (accum), accv_); \
 } while(0)
 
 /* decrypt 8 blocks at once */
