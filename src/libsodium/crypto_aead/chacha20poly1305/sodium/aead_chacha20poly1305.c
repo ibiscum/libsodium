@@ -165,7 +165,7 @@ crypto_aead_chacha20poly1305_ietf_encrypt(unsigned char *c,
 
 int
 crypto_aead_chacha20poly1305_decrypt_detached(unsigned char *m,
-                                              unsigned char *nsec,
+                                              const unsigned char *nsec,
                                               const unsigned char *c,
                                               unsigned long long clen,
                                               const unsigned char *mac,
@@ -245,7 +245,7 @@ crypto_aead_chacha20poly1305_decrypt(unsigned char *m,
 
 int
 crypto_aead_chacha20poly1305_ietf_decrypt_detached(unsigned char *m,
-                                                   unsigned char *nsec,
+                                                   const unsigned char *nsec,
                                                    const unsigned char *c,
                                                    unsigned long long clen,
                                                    const unsigned char *mac,

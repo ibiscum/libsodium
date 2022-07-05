@@ -46,38 +46,38 @@ LOADU64(const void *p)
 
 #define BLAKE2B_G1_V1(a, b, c, d, m) \
     do {                             \
-        a = ADD(a, m);               \
-        a = ADD(a, b);               \
-        d = XOR(d, a);               \
-        d = ROT32(d);                \
-        c = ADD(c, d);               \
-        b = XOR(b, c);               \
-        b = ROT24(b);                \
+        (a) = ADD(a, m);               \
+        (a) = ADD(a, b);               \
+        (d) = XOR(d, a);               \
+        (d) = ROT32(d);                \
+        (c) = ADD(c, d);               \
+        (b) = XOR(b, c);               \
+        (b) = ROT24(b);                \
     } while (0)
 
 #define BLAKE2B_G2_V1(a, b, c, d, m) \
     do {                             \
-        a = ADD(a, m);               \
-        a = ADD(a, b);               \
-        d = XOR(d, a);               \
-        d = ROT16(d);                \
-        c = ADD(c, d);               \
-        b = XOR(b, c);               \
-        b = ROT63(b);                \
+        (a) = ADD(a, m);               \
+        (a) = ADD(a, b);               \
+        (d) = XOR(d, a);               \
+        (d) = ROT16(d);                \
+        (c) = ADD(c, d);               \
+        (b) = XOR(b, c);               \
+        (b) = ROT63(b);                \
     } while (0)
 
 #define BLAKE2B_DIAG_V1(a, b, c, d)                               \
     do {                                                          \
-        a = _mm256_permute4x64_epi64(a, _MM_SHUFFLE(2, 1, 0, 3)); \
-        d = _mm256_permute4x64_epi64(d, _MM_SHUFFLE(1, 0, 3, 2)); \
-        c = _mm256_permute4x64_epi64(c, _MM_SHUFFLE(0, 3, 2, 1)); \
+        (a) = _mm256_permute4x64_epi64(a, _MM_SHUFFLE(2, 1, 0, 3)); \
+        (d) = _mm256_permute4x64_epi64(d, _MM_SHUFFLE(1, 0, 3, 2)); \
+        (c) = _mm256_permute4x64_epi64(c, _MM_SHUFFLE(0, 3, 2, 1)); \
     } while(0)
 
 #define BLAKE2B_UNDIAG_V1(a, b, c, d)                             \
     do {                                                          \
-        a = _mm256_permute4x64_epi64(a, _MM_SHUFFLE(0, 3, 2, 1)); \
-        d = _mm256_permute4x64_epi64(d, _MM_SHUFFLE(1, 0, 3, 2)); \
-        c = _mm256_permute4x64_epi64(c, _MM_SHUFFLE(2, 1, 0, 3)); \
+        (a) = _mm256_permute4x64_epi64(a, _MM_SHUFFLE(0, 3, 2, 1)); \
+        (d) = _mm256_permute4x64_epi64(d, _MM_SHUFFLE(1, 0, 3, 2)); \
+        (c) = _mm256_permute4x64_epi64(c, _MM_SHUFFLE(2, 1, 0, 3)); \
     } while(0)
 
 #include "blake2b-load-avx2.h"
@@ -133,10 +133,10 @@ LOADU64(const void *p)
         __m256i       d =                                                 \
             XOR(LOAD(&blake2b_IV[4]), _mm256_set_epi64x(f1, f0, t1, t0)); \
         BLAKE2B_ROUNDS_V1(a, b, c, d, m);                                 \
-        a = XOR(a, c);                                                    \
-        b = XOR(b, d);                                                    \
-        a = XOR(a, iv0);                                                  \
-        b = XOR(b, iv1);                                                  \
+        (a) = XOR(a, c);                                                    \
+        (b) = XOR(b, d);                                                    \
+        (a) = XOR(a, iv0);                                                  \
+        (b) = XOR(b, iv1);                                                  \
     } while (0)
 
 #endif

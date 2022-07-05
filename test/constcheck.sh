@@ -14,7 +14,7 @@ done
 echo "return 0; }" >> "$CT"
 
 CPPFLAGS="${CPPFLAGS} -Wno-deprecated-declarations"
-${CC:-cc} "$CT" $CPPFLAGS $CFLAGS $LDFLAGS -lsodium || exit 1
+${CC:-cc} "$CT" "$CPPFLAGS" "$CFLAGS" "$LDFLAGS" -lsodium || exit 1
 ./a.out || exit 1
 rm -f a.out "$CT"
 

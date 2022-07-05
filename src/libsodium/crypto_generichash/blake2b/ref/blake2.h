@@ -71,23 +71,23 @@ typedef struct blake2b_state {
 #endif
 
 /* Streaming API */
-int blake2b_init(blake2b_state *S, const uint8_t outlen);
-int blake2b_init_salt_personal(blake2b_state *S, const uint8_t outlen,
+int blake2b_init(blake2b_state *S, uint8_t outlen);
+int blake2b_init_salt_personal(blake2b_state *S, uint8_t outlen,
                                const void *salt, const void *personal);
-int blake2b_init_key(blake2b_state *S, const uint8_t outlen, const void *key,
-                     const uint8_t keylen);
-int blake2b_init_key_salt_personal(blake2b_state *S, const uint8_t outlen,
-                                   const void *key, const uint8_t keylen,
+int blake2b_init_key(blake2b_state *S, uint8_t outlen, const void *key,
+                     uint8_t keylen);
+int blake2b_init_key_salt_personal(blake2b_state *S, uint8_t outlen,
+                                   const void *key, uint8_t keylen,
                                    const void *salt, const void *personal);
 int blake2b_init_param(blake2b_state *S, const blake2b_param *P);
 int blake2b_update(blake2b_state *S, const uint8_t *in, uint64_t inlen);
 int blake2b_final(blake2b_state *S, uint8_t *out, uint8_t outlen);
 
 /* Simple API */
-int blake2b(uint8_t *out, const void *in, const void *key, const uint8_t outlen,
-            const uint64_t inlen, uint8_t keylen);
+int blake2b(uint8_t *out, const void *in, const void *key, uint8_t outlen,
+            uint64_t inlen, uint8_t keylen);
 int blake2b_salt_personal(uint8_t *out, const void *in, const void *key,
-                          const uint8_t outlen, const uint64_t inlen,
+                          uint8_t outlen, uint64_t inlen,
                           uint8_t keylen, const void *salt,
                           const void *personal);
 

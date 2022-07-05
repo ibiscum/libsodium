@@ -209,11 +209,11 @@ int argon2_ctx(argon2_context *context, argon2_type type);
  * @pre   Different parallelism levels will give different results
  * @pre   Returns ARGON2_OK if successful
  */
-int argon2i_hash_encoded(const uint32_t t_cost, const uint32_t m_cost,
-                         const uint32_t parallelism, const void *pwd,
-                         const size_t pwdlen, const void *salt,
-                         const size_t saltlen, const size_t hashlen,
-                         char *encoded, const size_t encodedlen);
+int argon2i_hash_encoded(uint32_t t_cost, uint32_t m_cost,
+                         uint32_t parallelism, const void *pwd,
+                         size_t pwdlen, const void *salt,
+                         size_t saltlen, size_t hashlen,
+                         char *encoded, size_t encodedlen);
 
 /**
  * Hashes a password with Argon2id, producing an encoded hash
@@ -230,11 +230,11 @@ int argon2i_hash_encoded(const uint32_t t_cost, const uint32_t m_cost,
  * @pre   Different parallelism levels will give different results
  * @pre   Returns ARGON2_OK if successful
  */
-int argon2id_hash_encoded(const uint32_t t_cost, const uint32_t m_cost,
-                          const uint32_t parallelism, const void *pwd,
-                          const size_t pwdlen, const void *salt,
-                          const size_t saltlen, const size_t hashlen,
-                          char *encoded, const size_t encodedlen);
+int argon2id_hash_encoded(uint32_t t_cost, uint32_t m_cost,
+                          uint32_t parallelism, const void *pwd,
+                          size_t pwdlen, const void *salt,
+                          size_t saltlen, size_t hashlen,
+                          char *encoded, size_t encodedlen);
 
 /**
  * Hashes a password with Argon2i, producing a raw hash

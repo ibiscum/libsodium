@@ -51,30 +51,30 @@ const char *crypto_box_primitive(void);
 SODIUM_EXPORT
 int crypto_box_seed_keypair(unsigned char *pk, unsigned char *sk,
                             const unsigned char *seed)
-            __attribute__ ((nonnull));
+    __attribute__ ((nonnull));
 
 SODIUM_EXPORT
 int crypto_box_keypair(unsigned char *pk, unsigned char *sk)
-            __attribute__ ((nonnull));
+    __attribute__ ((nonnull));
 
 SODIUM_EXPORT
 int crypto_box_easy(unsigned char *c, const unsigned char *m,
                     unsigned long long mlen, const unsigned char *n,
                     const unsigned char *pk, const unsigned char *sk)
-            __attribute__ ((warn_unused_result)) __attribute__ ((nonnull(1, 4, 5, 6)));
+    __attribute__ ((warn_unused_result)) __attribute__ ((nonnull(1, 4, 5, 6)));
 
 SODIUM_EXPORT
 int crypto_box_open_easy(unsigned char *m, const unsigned char *c,
                          unsigned long long clen, const unsigned char *n,
                          const unsigned char *pk, const unsigned char *sk)
-            __attribute__ ((warn_unused_result)) __attribute__ ((nonnull(2, 4, 5, 6)));
+    __attribute__ ((warn_unused_result)) __attribute__ ((nonnull(2, 4, 5, 6)));
 
 SODIUM_EXPORT
 int crypto_box_detached(unsigned char *c, unsigned char *mac,
                         const unsigned char *m, unsigned long long mlen,
                         const unsigned char *n, const unsigned char *pk,
                         const unsigned char *sk)
-            __attribute__ ((warn_unused_result)) __attribute__ ((nonnull(1, 2, 5, 6, 7)));
+    __attribute__ ((warn_unused_result)) __attribute__ ((nonnull(1, 2, 5, 6, 7)));
 
 SODIUM_EXPORT
 int crypto_box_open_detached(unsigned char *m, const unsigned char *c,
@@ -83,9 +83,9 @@ int crypto_box_open_detached(unsigned char *m, const unsigned char *c,
                              const unsigned char *n,
                              const unsigned char *pk,
                              const unsigned char *sk)
-            __attribute__ ((warn_unused_result)) __attribute__ ((nonnull(2, 3, 5, 6, 7)));
+    __attribute__ ((warn_unused_result)) __attribute__ ((nonnull(2, 3, 5, 6, 7)));
 
-/* -- Precomputation interface -- */
+/* -- Pre-computation interface -- */
 
 #define crypto_box_BEFORENMBYTES crypto_box_curve25519xsalsa20poly1305_BEFORENMBYTES
 SODIUM_EXPORT
@@ -94,31 +94,32 @@ size_t  crypto_box_beforenmbytes(void);
 SODIUM_EXPORT
 int crypto_box_beforenm(unsigned char *k, const unsigned char *pk,
                         const unsigned char *sk)
-            __attribute__ ((warn_unused_result)) __attribute__ ((nonnull));
+    __attribute__ ((warn_unused_result)) __attribute__ ((nonnull));
 
 SODIUM_EXPORT
 int crypto_box_easy_afternm(unsigned char *c, const unsigned char *m,
                             unsigned long long mlen, const unsigned char *n,
-                            const unsigned char *k) __attribute__ ((nonnull(1, 4, 5)));
+                            const unsigned char *k)
+    __attribute__ ((nonnull(1, 4, 5)));
 
 SODIUM_EXPORT
 int crypto_box_open_easy_afternm(unsigned char *m, const unsigned char *c,
                                  unsigned long long clen, const unsigned char *n,
                                  const unsigned char *k)
-            __attribute__ ((warn_unused_result)) __attribute__ ((nonnull(2, 4, 5)));
+    __attribute__ ((warn_unused_result)) __attribute__ ((nonnull(2, 4, 5)));
 
 SODIUM_EXPORT
 int crypto_box_detached_afternm(unsigned char *c, unsigned char *mac,
                                 const unsigned char *m, unsigned long long mlen,
                                 const unsigned char *n, const unsigned char *k)
-            __attribute__ ((nonnull(1, 2, 5, 6)));
+    __attribute__ ((nonnull(1, 2, 5, 6)));
 
 SODIUM_EXPORT
 int crypto_box_open_detached_afternm(unsigned char *m, const unsigned char *c,
                                      const unsigned char *mac,
                                      unsigned long long clen, const unsigned char *n,
                                      const unsigned char *k)
-            __attribute__ ((warn_unused_result)) __attribute__ ((nonnull(2, 3, 5, 6)));
+    __attribute__ ((warn_unused_result)) __attribute__ ((nonnull(2, 3, 5, 6)));
 
 /* -- Ephemeral SK interface -- */
 

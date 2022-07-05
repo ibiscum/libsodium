@@ -71,9 +71,9 @@ static const uint32_t Krnd[64] = {
     0x90befffa, 0xa4506ceb, 0xbef9a3f7, 0xc67178f2
 };
 
-#define Ch(x, y, z) ((x & (y ^ z)) ^ z)
-#define Maj(x, y, z) ((x & (y | z)) | (y & z))
-#define SHR(x, n) (x >> n)
+#define Ch(x, y, z) (((x) & ((y) ^ (z))) ^ (z))
+#define Maj(x, y, z) (((x) & ((y) | (z))) | ((y) & (z)))
+#define SHR(x, n) ((x) >> (n))
 #define ROTR(x, n) ROTR32(x, n)
 #define S0(x) (ROTR(x, 2) ^ ROTR(x, 13) ^ ROTR(x, 22))
 #define S1(x) (ROTR(x, 6) ^ ROTR(x, 11) ^ ROTR(x, 25))
@@ -81,18 +81,18 @@ static const uint32_t Krnd[64] = {
 #define s1(x) (ROTR(x, 17) ^ ROTR(x, 19) ^ SHR(x, 10))
 
 #define RND(a, b, c, d, e, f, g, h, k) \
-    h += S1(e) + Ch(e, f, g) + k;      \
-    d += h;                            \
-    h += S0(a) + Maj(a, b, c);
+    h += S1(e) + Ch(e, f, g) + (k);    \
+    (d) += (h);                        \
+    (h) += S0(a) + Maj(a, b, c);
 
 #define RNDr(S, W, i, ii)                                                   \
-    RND(S[(64 - i) % 8], S[(65 - i) % 8], S[(66 - i) % 8], S[(67 - i) % 8], \
-        S[(68 - i) % 8], S[(69 - i) % 8], S[(70 - i) % 8], S[(71 - i) % 8], \
-        W[i + ii] + Krnd[i + ii])
+    RND((S)[(64 - (i)) % 8], (S)[(65 - (i)) % 8], (S)[(66 - (i)) % 8], (S)[(67 - (i)) % 8], \
+        (S)[(68 - (i)) % 8], (S)[(69 - (i)) % 8], (S)[(70 - (i)) % 8], (S)[(71 - (i)) % 8], \
+        (W)[(i) + (ii)] + Krnd[(i) + (ii)])
 
 #define MSCH(W, ii, i) \
-    W[i + ii + 16] =   \
-        s1(W[i + ii + 14]) + W[i + ii + 9] + s0(W[i + ii + 1]) + W[i + ii]
+    W[(i) + (ii) + 16] = \
+        s1((W)[(i) + (ii) + 14]) + (W)[(i) + (ii) + 9] + s0((W)[(i) + (ii) + 1]) + (W)[(i) + (ii)]
 
 static void
 SHA256_Transform(uint32_t state[8], const uint8_t block[64], uint32_t W[64],
@@ -241,14 +241,13 @@ crypto_hash_sha256_final(crypto_hash_sha256_state *state, unsigned char *out)
 }
 
 int
-crypto_hash_sha256(unsigned char *out, const unsigned char *in,
-                   unsigned long long inlen)
+crypto_hash_sha256(unsigned char *out, const unsigned char *in, unsigned long long inlen)
 {
-    crypto_hash_sha256_state state;
+  crypto_hash_sha256_state state;
 
-    crypto_hash_sha256_init(&state);
-    crypto_hash_sha256_update(&state, in, inlen);
-    crypto_hash_sha256_final(&state, out);
+  crypto_hash_sha256_init(&state);
+  crypto_hash_sha256_update(&state, in, inlen);
+  crypto_hash_sha256_final(&state, out);
 
-    return 0;
+  return 0;
 }

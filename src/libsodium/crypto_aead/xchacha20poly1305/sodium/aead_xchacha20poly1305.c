@@ -65,7 +65,7 @@ _encrypt_detached(unsigned char *c,
 
 static int
 _decrypt_detached(unsigned char *m,
-                  unsigned char *nsec,
+                  const unsigned char *nsec,
                   const unsigned char *c,
                   unsigned long long clen,
                   const unsigned char *mac,

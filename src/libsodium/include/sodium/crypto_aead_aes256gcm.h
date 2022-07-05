@@ -34,7 +34,7 @@ extern "C" {
 SODIUM_EXPORT
 int crypto_aead_aes256gcm_is_available(void);
 
-#define crypto_aead_aes256gcm_KEYBYTES  32U
+#define crypto_aead_aes256gcm_KEYBYTES 32U
 SODIUM_EXPORT
 size_t crypto_aead_aes256gcm_keybytes(void);
 
@@ -46,7 +46,7 @@ size_t crypto_aead_aes256gcm_nsecbytes(void);
 SODIUM_EXPORT
 size_t crypto_aead_aes256gcm_npubbytes(void);
 
-#define crypto_aead_aes256gcm_ABYTES    16U
+#define crypto_aead_aes256gcm_ABYTES 16U
 SODIUM_EXPORT
 size_t crypto_aead_aes256gcm_abytes(void);
 
@@ -73,7 +73,7 @@ int crypto_aead_aes256gcm_encrypt(unsigned char *c,
                                   const unsigned char *nsec,
                                   const unsigned char *npub,
                                   const unsigned char *k)
-            __attribute__ ((nonnull(1, 8, 9)));
+    __attribute__ ((nonnull(1, 8, 9)));
 
 SODIUM_EXPORT
 int crypto_aead_aes256gcm_decrypt(unsigned char *m,
@@ -85,7 +85,8 @@ int crypto_aead_aes256gcm_decrypt(unsigned char *m,
                                   unsigned long long adlen,
                                   const unsigned char *npub,
                                   const unsigned char *k)
-            __attribute__ ((warn_unused_result)) __attribute__ ((nonnull(4, 8, 9)));
+    __attribute__ ((warn_unused_result))
+    __attribute__ ((nonnull(4, 8, 9)));
 
 SODIUM_EXPORT
 int crypto_aead_aes256gcm_encrypt_detached(unsigned char *c,
@@ -98,7 +99,7 @@ int crypto_aead_aes256gcm_encrypt_detached(unsigned char *c,
                                            const unsigned char *nsec,
                                            const unsigned char *npub,
                                            const unsigned char *k)
-            __attribute__ ((nonnull(1, 2, 9, 10)));
+    __attribute__ ((nonnull(1, 2, 9, 10)));
 
 SODIUM_EXPORT
 int crypto_aead_aes256gcm_decrypt_detached(unsigned char *m,
@@ -110,14 +111,15 @@ int crypto_aead_aes256gcm_decrypt_detached(unsigned char *m,
                                            unsigned long long adlen,
                                            const unsigned char *npub,
                                            const unsigned char *k)
-            __attribute__ ((warn_unused_result)) __attribute__ ((nonnull(3, 5, 8, 9)));
+    __attribute__ ((warn_unused_result))
+    __attribute__ ((nonnull(3, 5, 8, 9)));
 
-/* -- Precomputation interface -- */
+/* -- Pre-computation interface -- */
 
 SODIUM_EXPORT
 int crypto_aead_aes256gcm_beforenm(crypto_aead_aes256gcm_state *ctx_,
                                    const unsigned char *k)
-            __attribute__ ((nonnull));
+    __attribute__ ((nonnull));
 
 SODIUM_EXPORT
 int crypto_aead_aes256gcm_encrypt_afternm(unsigned char *c,

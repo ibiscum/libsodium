@@ -160,3 +160,6 @@ test/default/verify1
 test/default/xchacha20
 test/js.done
 testing
+/test/default/auth4
+/test/default/auth8
+/test/default/auth9

@@ -12,9 +12,12 @@ EXTRA_DIST = \
 	auth.exp \
 	auth2.exp \
 	auth3.exp \
+	auth4.exp \
 	auth5.exp \
 	auth6.exp \
 	auth7.exp \
+	auth8.exp \
+	auth9.exp \
 	box.exp \
 	box2.exp \
 	box7.exp \
@@ -91,9 +94,12 @@ DISTCLEANFILES = \
 	auth.res \
 	auth2.res \
 	auth3.res \
+	auth4.res \
 	auth5.res \
 	auth6.res \
 	auth7.res \
+	auth8.res \
+	auth9.res \
 	box.res \
 	box2.res \
 	box7.res \
@@ -181,9 +187,12 @@ TESTS_TARGETS = \
 	auth \
 	auth2 \
 	auth3 \
+	auth4 \
 	auth5 \
 	auth6 \
 	auth7 \
+	auth8 \
+	auth9 \
 	box \
 	box2 \
 	box7 \
@@ -278,6 +287,9 @@ auth2_LDADD               = $(TESTS_LDADD)
 auth3_SOURCE              = cmptest.h auth3.c
 auth3_LDADD               = $(TESTS_LDADD)
 
+auth4_SOURCE              = cmptest.h auth4.c
+auth4_LDADD               = $(TESTS_LDADD)
+
 auth5_SOURCE              = cmptest.h auth5.c quirks.h
 auth5_LDADD               = $(TESTS_LDADD)
 
@@ -286,6 +298,12 @@ auth6_LDADD               = $(TESTS_LDADD)
 
 auth7_SOURCE              = cmptest.h auth7.c quirks.h
 auth7_LDADD               = $(TESTS_LDADD)
+
+auth8_SOURCE              = cmptest.h auth8.c quirks.h
+auth8_LDADD               = $(TESTS_LDADD)
+
+auth9_SOURCE              = cmptest.h auth9.c quirks.h
+auth9_LDADD               = $(TESTS_LDADD)
 
 box_SOURCE                = cmptest.h box.c
 box_LDADD                 = $(TESTS_LDADD)

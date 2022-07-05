@@ -21,20 +21,14 @@ SODIUM_EXPORT
 size_t crypto_auth_hmacsha512256_keybytes(void);
 
 SODIUM_EXPORT
-int crypto_auth_hmacsha512256(unsigned char *out,
-                              const unsigned char *in,
-                              unsigned long long inlen,
-                              const unsigned char *k) __attribute__ ((nonnull(1, 4)));
+int crypto_auth_hmacsha512256(unsigned char *out, const unsigned char *in, unsigned long long inlen, const unsigned char *k)
+    __attribute__ ((nonnull(1, 4)));
 
 SODIUM_EXPORT
-int crypto_auth_hmacsha512256_verify(const unsigned char *h,
-                                     const unsigned char *in,
-                                     unsigned long long inlen,
-                                     const unsigned char *k)
-            __attribute__ ((warn_unused_result)) __attribute__ ((nonnull(1, 4)));
+int crypto_auth_hmacsha512256_verify(const unsigned char *h, const unsigned char *in, unsigned long long inlen, const unsigned char *k)
+    __attribute__ ((warn_unused_result)) __attribute__ ((nonnull(1, 4)));
 
 /* ------------------------------------------------------------------------- */
-
 typedef crypto_auth_hmacsha512_state crypto_auth_hmacsha512256_state;
 
 SODIUM_EXPORT
